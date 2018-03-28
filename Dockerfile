@@ -54,6 +54,7 @@ WORKDIR /docker_main
 RUN wget https://github.com/samtools/samtools/releases/download/1.4/samtools-1.4.tar.bz2 && \
     tar -jxf samtools-1.4.tar.bz2 && \
     cd samtools-1.4 && \
+    ./configure \
     make && \
     make install && \
     cp samtools /usr/bin/
