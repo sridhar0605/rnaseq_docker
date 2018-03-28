@@ -34,7 +34,8 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     python-matplotlib \
     hdf5-tools \
     libhdf5-dev \
-    hdf5-helpers
+    hdf5-helpers \
+    ncurses-dev
 
 
 
@@ -48,14 +49,6 @@ WORKDIR /docker_main
 #    unzip hisat2-2.1.0-Linux_x86_64.zip
 #RUN cp -p hisat2-2.1.0/hisat2 hisat2-2.1.0/hisat2-* /usr/bin
 
-WORKDIR /docker_main
-RUN wget https://github.com/samtools/htslib/releases/download/1.3.2/htslib-1.3.2.tar.bz2 && \
-    tar --bzip2 -xf htslib-1.3.2.tar.bz2 && \
-    cd /docker_main/htslib-1.3.2 && \
-    ./configure  --enable-plugins && \
-    make && \
-    make install && \
-    cp /lib/libhts.so* /usr/bin/
 
 WORKDIR /docker_main
 RUN wget https://github.com/samtools/samtools/releases/download/1.4/samtools-1.4.tar.bz2 && \
@@ -68,7 +61,7 @@ RUN wget https://github.com/samtools/samtools/releases/download/1.4/samtools-1.4
 
 # Clean up
 RUN cd /docker_main/ && \
-   rm -rf samtools-1.4 htslib-1.3.2 && \
+   rm -rf samtools-1.4 && \
    apt-get autoremove -y && \
    apt-get autoclean -y  && \
    apt-get clean
