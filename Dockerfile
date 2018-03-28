@@ -43,16 +43,23 @@ WORKDIR /docker_main
 
 
 #install hisat2
-WORKDIR /docker_main
-RUN wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-Linux_x86_64.zip && \
-    unzip hisat2-2.1.0-Linux_x86_64.zip
-RUN cp -p hisat2-2.1.0/hisat2 hisat2-2.1.0/hisat2-* /usr/bin
+#WORKDIR /docker_main
+#RUN wget ftp://ftp.ccb.jhu.edu/pub/infphilo/hisat2/downloads/hisat2-2.1.0-Linux_x86_64.zip && \
+#    unzip hisat2-2.1.0-Linux_x86_64.zip
+#RUN cp -p hisat2-2.1.0/hisat2 hisat2-2.1.0/hisat2-* /usr/bin
 
+WORKDIR /docker_main
+RUN wget https://github.com/samtools/samtools/releases/download/1.4/samtools-1.4.tar.bz2 && \
+    tar -jxf samtools-1.4.tar.bz2 && \
+    cd samtools-1.4 && \
+    make && \
+    make install && \
+    cp samtools /usr/bin/
 
 
 # Clean up
 RUN cd /docker_main/ && \
-   rm -rf hisat2-2.1.0 && \
+   rm -rf samtools-1.4 && \
    apt-get autoremove -y && \
    apt-get autoclean -y  && \
    apt-get clean
