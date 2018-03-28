@@ -32,6 +32,13 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     python2.7-dev \
     python-numpy \
     python-matplotlib \
+    python-pandas \
+    python-scipy \
+    python-pyensembl \
+    python-pysam \
+    python-biopython \
+    python-seaborn \
+    python-scikit-learn \
     hdf5-tools \
     libhdf5-dev \
     hdf5-helpers \
