@@ -61,7 +61,7 @@ RUN wget https://github.com/samtools/samtools/releases/download/1.7/samtools-1.7
 #install stringtie
 WORKDIR /docker_main
 RUN wget http://ccb.jhu.edu/software/stringtie/dl/stringtie-1.3.4d.Linux_x86_64.tar.gz && \
-    tar zxf stringtie-1.3.4d.Linux_x86_64.tar.gz && \
+    tar -zxf stringtie-1.3.4d.Linux_x86_64.tar.gz && \
     cp ./stringtie-1.3.4d.Linux_x86_64/stringtie /usr/bin/
 
 
@@ -70,11 +70,10 @@ WORKDIR /docker_main
 RUN wget http://ccb.jhu.edu/software/stringtie/dl/prepDE.py
 
 # Clean up
-RUN cd / && \
-   rm -rf /tmp/* && \
+RUN cd /docker_main / && \
+   rm -rf hisat2-2.1.0 samtools-1.7 stringtie-1.3.4d.Linux_x86_64  && \
    apt-get autoremove -y && \
-   apt-get autoclean -y && \
-   rm -rf /var/lib/apt/lists/* && \
+   apt-get autoclean -y  && \
    apt-get clean
    
 # needed for MGI data mounts
