@@ -59,27 +59,15 @@ RUN wget https://github.com/samtools/samtools/releases/download/1.7/samtools-1.7
     cp samtools /usr/bin/
 
 #install stringtie
-WORKDIR /docker
+WORKDIR /docker_main
 RUN wget http://ccb.jhu.edu/software/stringtie/dl/stringtie-1.3.4d.Linux_x86_64.tar.gz && \
     tar zxf stringtie-1.3.4d.Linux_x86_64.tar.gz && \
     cp ./stringtie-1.3.4d.Linux_x86_64/stringtie /usr/bin/
 
 
 #install prepDE
-WORKDIR /docker
+WORKDIR /docker_main
 RUN wget http://ccb.jhu.edu/software/stringtie/dl/prepDE.py
-
-
-
-
-#install bxtools
-RUN cd /opt && git config --global http.sslVerify false && \
-    git clone --recursive https://github.com/walaj/bxtools && \
-    cd bxtools && \
-    ./configure && \
-    make && \
-    make install && \
-    ln -s /opt/bxtools/bin/bxtools /bin/bxtools
 
 # Clean up
 RUN cd / && \
@@ -93,4 +81,4 @@ RUN cd / && \
 RUN apt-get update && apt-get install -y libnss-sss && apt-get clean all
 
 # Set default working path
-WORKDIR /docker
+WORKDIR /docker_main
