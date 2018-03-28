@@ -40,7 +40,7 @@ ENV CONDA_DIR /opt/conda
 ENV PATH $CONDA_DIR/bin:$PATH
 
 # Install conda
-RUN cd docker_main/ && \
+RUN cd /docker_main/ && \
     mkdir -p $CONDA_DIR && \
     curl -s https://repo.continuum.io/miniconda/Miniconda3-4.3.21-Linux-x86_64.sh -o miniconda.sh && \
     /bin/bash miniconda.sh -f -b -p $CONDA_DIR && \
