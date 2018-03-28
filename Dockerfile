@@ -36,7 +36,8 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     ncurses-dev
     
 #python libs
-RUN pip install numpy && \
+RUN pip install --upgrade pip && \
+    pip install numpy && \
     pip install matplotlib && \
     pip install pandas && \
     pip install scipy && \
