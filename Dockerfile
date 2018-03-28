@@ -34,7 +34,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     python-matplotlib \
     hdf5-tools \
     libhdf5-dev \
-    hdf5-helpers \
+    hdf5-helpers
 
 
 
