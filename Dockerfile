@@ -27,29 +27,46 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libbz2-dev \
     liblzma-dev \
     python \
-    python-pip \
-    python-dev \
-    python2.7-dev \
     hdf5-tools \
     libhdf5-dev \
     hdf5-helpers \
     ncurses-dev
     
-#python libs
-RUN pip install --upgrade pip && \
-    pip install numpy && \
-    pip install matplotlib && \
-    pip install pandas && \
-    pip install scipy && \
-    pip install pysam && \
-    pip install biopython && \
-    pip install seaborn && \
-    pip install scikit-learn
-
-
-
 #Create Working Directory
 WORKDIR /docker_main
+
+#install conda
+ENV CONDA_DIR /opt/conda
+ENV PATH $CONDA_DIR/bin:$PATH
+
+# Install conda
+RUN cd docker_main/ && \
+    mkdir -p $CONDA_DIR && \
+    curl -s https://repo.continuum.io/miniconda/Miniconda3-4.3.21-Linux-x86_64.sh -o miniconda.sh && \
+    /bin/bash miniconda.sh -f -b -p $CONDA_DIR && \
+    rm miniconda.sh && \
+    $CONDA_DIR/bin/conda config --system --add channels conda-forge && \
+    $CONDA_DIR/bin/conda config --system --set auto_update_conda false && \
+    conda clean -tipsy
+
+RUN conda create --quiet --yes -p $CONDA_DIR/envs/python2 python=2.7 'pip' && \
+    conda clean -tipsy && \
+    #dependencies sometimes get weird - installing each on it's own line seems to help
+    pip install numpy==1.13.0 && \
+    pip install scipy==0.19.0 && \
+    pip install cruzdb==0.5.6 && \
+    pip install cython==0.25.2 && \
+    pip install pyensembl==1.1.0 && \
+    pip install pyfaidx==0.4.9.2 && \
+    pip install pybedtools==0.7.10 && \
+    pip install cyvcf2==0.7.4 && \
+    pip install intervaltree_bio==1.0.1 && \
+    pip install pandas==0.20.2 && \
+    pip install scipy==0.19.0 && \
+    pip install pysam==0.11.2.2 && \
+    pip install seaborn==0.7.1 && \
+    pip install scikit-learn==0.18.2 && \
+    pip install openpyxl==2.4.8
 
 
 #install hisat2
