@@ -51,9 +51,9 @@ RUN cp -p hisat2-2.1.0/hisat2 hisat2-2.1.0/hisat2-* /usr/bin
 
 #install samtools
 WORKDIR /docker_main
-RUN wget https://github.com/samtools/samtools/releases/download/1.7/samtools-1.7.tar.bz2 && \
-    tar -jxf samtools-1.7.tar.bz2 && \
-    cd samtools-1.7 && \
+RUN wget https://github.com/samtools/samtools/releases/download/1.4/samtools-1.4.tar.bz2 && \
+    tar -jxf samtools-1.4.tar.bz2 && \
+    cd samtools-1.4 && \
     make && \
     make install && \
     cp samtools /usr/bin/
@@ -71,7 +71,7 @@ RUN wget http://ccb.jhu.edu/software/stringtie/dl/prepDE.py
 
 # Clean up
 RUN cd /docker_main / && \
-   rm -rf hisat2-2.1.0 samtools-1.7 stringtie-1.3.4d.Linux_x86_64  && \
+   rm -rf hisat2-2.1.0 samtools-1.4 stringtie-1.3.4d.Linux_x86_64  && \
    apt-get autoremove -y && \
    apt-get autoclean -y  && \
    apt-get clean
