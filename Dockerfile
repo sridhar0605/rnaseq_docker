@@ -27,6 +27,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libbz2-dev \
     liblzma-dev \
     python \
+    python-pip \
     python-dev \
     python2.7-dev \
     hdf5-tools \
