@@ -36,8 +36,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     ncurses-dev
     
 
-RUN pip install --upgrade pip && \
-    pip install --upgrade setuptools && \
+RUN pip install --upgrade setuptools && \
     pip install numpy && \
     pip install matplotlib && \
     pip install pandas && \
@@ -45,7 +44,8 @@ RUN pip install --upgrade pip && \
     pip install pysam && \
     pip install biopython && \
     pip install seaborn && \
-    pip install scikit-learn
+    pip install scikit-learn && \
+    pip install progressbar2
     
     
 #Create Working Directory
