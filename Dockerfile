@@ -45,7 +45,8 @@ RUN pip install --upgrade pip && \
     pip install pysam && \
     pip install biopython && \
     pip install seaborn && \
-    pip install scikit-learn
+    pip install scikit-learn && \
+    pip install progressbar2
     
     
 #Create Working Directory
