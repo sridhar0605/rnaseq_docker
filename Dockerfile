@@ -33,7 +33,9 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     hdf5-tools \
     libhdf5-dev \
     hdf5-helpers \
-    ncurses-dev
+    ncurses-dev \
+    default-jdk \
+    default-jre
     
 
 RUN pip install --upgrade setuptools && \
