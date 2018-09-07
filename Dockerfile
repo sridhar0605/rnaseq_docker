@@ -34,12 +34,11 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libhdf5-dev \
     hdf5-helpers \
     ncurses-dev \
+    default-jdk \
     default-jre \
-    add-apt-repository ppa:webupd8team/java -y && \
-    apt-get update &&
-    echo oracle-java7-installer shared/accepted-oracle-license-v1-1 select true | /usr/bin/debconf-set-selections && \
-    apt-get install -y oracle-java8-installer
-
+    openjdk-8-jre-headless 
+    
+    
     
 
 RUN pip install --upgrade setuptools && \
