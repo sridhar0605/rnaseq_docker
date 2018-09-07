@@ -34,7 +34,6 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libhdf5-dev \
     hdf5-helpers \
     ncurses-dev \
-    default-jdk \
     default-jre \
     openjdk-8-jre-headless 
     
