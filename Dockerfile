@@ -31,28 +31,21 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     hdf5-helpers \
     ncurses-dev \
     default-jre \
-    openjdk-8-jre-headless 
-
-
-#python3
-RUN apt-get install python3.6 python3.6-dev python3-pip python3.6-venv
-# update pip
-RUN python3.6 -m pip install pip --upgrade
-RUN python3.6 -m pip install wheel
+    openjdk-8-jre-headless && \
+    python3.6 python3.6-dev python3-pip python3.6-venv
     
     
     
 
-RUN pip install --upgrade setuptools && \
+RUN python3.6 -m pip install pip --upgrade && \
+    python3.6 -m pip install wheel && \
+    pip install --upgrade setuptools && \
     pip install numpy && \
     pip install matplotlib && \
     pip install pandas && \
     pip install scipy && \
     pip install pysam && \
     pip install biopython && \
-    pip install seaborn && \
-    pip install scikit-learn && \
-    pip install progressbar2 && \
     pip install cutadapt
     
     
