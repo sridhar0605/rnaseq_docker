@@ -31,8 +31,11 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     hdf5-helpers \
     ncurses-dev \
     default-jre \
-    openjdk-8-jre-headless && \
-    python3.6 python3.6-dev python3-pip python3.6-venv
+    openjdk-8-jre-headless \
+    python3.6 \
+    python3.6-dev \
+    python3-pip \
+    python3.6-venv
     
     
     
