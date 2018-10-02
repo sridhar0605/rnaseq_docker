@@ -26,16 +26,19 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     zlib1g-dev \
     libbz2-dev \
     liblzma-dev \
-    python \
-    python-pip \
-    python-dev \
-    python2.7-dev \
     hdf5-tools \
     libhdf5-dev \
     hdf5-helpers \
     ncurses-dev \
     default-jre \
     openjdk-8-jre-headless 
+
+
+#python3
+RUN apt-get install -y python3.6 python3.6-dev python3-pip python3.6-venv
+# update pip
+RUN python3.6 -m pip install pip --upgrade
+RUN python3.6 -m pip install wheel
     
     
     
