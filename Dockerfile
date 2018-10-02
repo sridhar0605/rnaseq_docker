@@ -30,14 +30,11 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libhdf5-dev \
     hdf5-helpers \
     ncurses-dev \
-    default-jre \
-    openjdk-8-jre-headless \
-    python3-pip \
-    python3-dev
+    openjdk-8-jre-headless
     
     
     
-
+FROM conda/miniconda3
 RUN pip install pip --upgrade && \
     pip install wheel && \
     pip install --upgrade setuptools && \
