@@ -35,7 +35,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
 
 
 #python3
-RUN apt-get install -y python3.6 python3.6-dev python3-pip python3.6-venv
+RUN apt-get install python3.6 python3.6-dev python3-pip python3.6-venv
 # update pip
 RUN python3.6 -m pip install pip --upgrade
 RUN python3.6 -m pip install wheel
