@@ -1,4 +1,4 @@
-FROM ubuntu:xenial
+FROM ubuntu:bionic
 
 MAINTAINER sridhar <sridhar@wustl.edu>
 
@@ -32,16 +32,14 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     ncurses-dev \
     default-jre \
     openjdk-8-jre-headless \
-    python3.6 \
-    python3.6-dev \
     python3-pip \
-    python3.6-venv
+    python3-dev
     
     
     
 
-RUN python3.6 -m pip install pip --upgrade && \
-    python3.6 -m pip install wheel && \
+RUN pip install pip --upgrade && \
+    pip install wheel && \
     pip install --upgrade setuptools && \
     pip install numpy && \
     pip install matplotlib && \
