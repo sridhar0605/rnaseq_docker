@@ -1,4 +1,4 @@
-FROM ubuntu:bionic
+FROM ubuntu:latest
 
 MAINTAINER sridhar <sridhar@wustl.edu>
 
@@ -30,24 +30,22 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     libhdf5-dev \
     hdf5-helpers \
     ncurses-dev \
-    openjdk-8-jre-headless
+    openjdk-8-jre-headless \
+    python3-pip \
+    python-dev \
+    vim-tiny \
+    libnss-sss
     
     
     
-FROM conda/miniconda3
-RUN apt-get update
-RUN apt-get install -y vim-tiny libnss-sss
-RUN pip install --upgrade pip
-RUN pip install pip --upgrade && \
-    pip install wheel && \
-    pip install --upgrade setuptools && \
-    pip install numpy && \
-    pip install matplotlib && \
-    pip install pandas && \
-    pip install scipy && \
-    pip install pysam && \
-    pip install biopython && \
-    pip install cutadapt
+RUN pip3 install --upgrade setuptools && \
+    pip3 install numpy && \
+    pip3 install matplotlib && \
+    pip3 install pandas && \
+    pip3 install scipy && \
+    pip3 install pysam && \
+    pip3 install biopython && \
+    pip3 install cutadapt
     
     
 #Create Working Directory
