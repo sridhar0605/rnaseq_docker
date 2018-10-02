@@ -35,6 +35,9 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     
     
 FROM conda/miniconda3
+RUN apt-get update
+RUN apt-get install -y vim-tiny libnss-sss
+RUN pip install --upgrade pip
 RUN pip install pip --upgrade && \
     pip install wheel && \
     pip install --upgrade setuptools && \
