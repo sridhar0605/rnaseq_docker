@@ -34,7 +34,8 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     python3-pip \
     python-dev \
     vim-tiny \
-    libnss-sss
+    libnss-sss \
+    tzdata
     
     
     
