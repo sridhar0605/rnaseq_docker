@@ -94,6 +94,11 @@ RUN cd /docker_main / && \
    
 # needed for MGI data mounts
 RUN apt-get update && apt-get install -y libnss-sss && apt-get clean all
-
+##lsf time stamp bug
+## borrow from cmiller
+RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime && \
+    echo "America/Chicago" > /etc/timezone && \
+    dpkg-reconfigure --frontend noninteractive tzdata
+    
 # Set default working path
 WORKDIR /docker_main
