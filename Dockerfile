@@ -86,6 +86,9 @@ ADD https://github.com/alexdobin/STAR/archive/${star_version}.tar.gz /usr/bin/
 RUN tar -xzf /usr/bin/${star_version}.tar.gz -C /usr/bin/
 RUN cp /usr/bin/STAR-${star_version}/bin/Linux_x86_64/* /usr/local/bin
 
+RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime && \
+    echo "America/Chicago" > /etc/timezone && \
+    dpkg-reconfigure --frontend noninteractive tzdata
 # Clean up
 RUN cd /docker_main / && \
    rm -rf hisat2-2.1.0 samtools-1.4 stringtie-1.3.4d.Linux_x86_64 2.5.3a.tar.gz && \
@@ -98,9 +101,7 @@ RUN apt-get update && apt-get install -y libnss-sss && apt-get clean all
 
 ##lsf time stamp bug
 ## borrow from cmiller
-RUN ln -sf /usr/share/zoneinfo/America/Chicago /etc/localtime && \
-    echo "America/Chicago" > /etc/timezone && \
-    dpkg-reconfigure --frontend noninteractive tzdata
+
     
 # Set default working path
 WORKDIR /docker_main
