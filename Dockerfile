@@ -34,9 +34,7 @@ RUN apt-get update -y && apt-get install -y --no-install-recommends \
     python3-pip \
     python-dev \
     vim-tiny \
-    libnss-sss \
-    tzdata
-    
+    libnss-sss
     
     
 RUN pip3 install --upgrade setuptools && \
@@ -96,8 +94,5 @@ RUN cd /docker_main / && \
 # needed for MGI data mounts
 RUN apt-get update && apt-get install -y libnss-sss && apt-get clean all
 
-
-
-    
 # Set default working path
 WORKDIR /docker_main
